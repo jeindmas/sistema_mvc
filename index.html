@@ -1,29 +1,23 @@
-<?php
-session_start();
+<!DOCTYPE html>
+<html lang="es">
 
-// Incluir archivos necesarios
-require_once 'config/database.php';
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="0; url=index.php">
+    <title>Cargando Aplicación...</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+        }
+    </style>
+</head>
 
-// Obtener el controlador y acción de la URL
-$controller = isset($_GET['controller']) ? $_GET['controller'] : 'login';
-$action = isset($_GET['action']) ? $_GET['action'] : 'index';
+<body>
+    <h1>Cargando Aplicación MVC...</h1>
+    <p>Si no es redirigido automáticamente, haga clic en el siguiente enlace:</p>
+    <p><a href="index.php">Iniciar Aplicación</a></p>
+</body>
 
-// Construir el nombre del archivo del controlador
-$controllerFile = 'controllers/' . ucfirst($controller) . 'Controller.php';
-
-// Verificar si el archivo existe
-if (file_exists($controllerFile)) {
-    require_once $controllerFile;
-    $controllerClass = ucfirst($controller) . 'Controller';
-    $controllerObj = new $controllerClass();
-    
-    // Verificar si el método existe
-    if (method_exists($controllerObj, $action)) {
-        $controllerObj->$action();
-    } else {
-        die("Acción no encontrada");
-    }
-} else {
-    die("Controlador no encontrado");
-}
-?>
+</html>
